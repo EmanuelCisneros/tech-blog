@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import useSWR from 'swr';
-import PostCard from '../components/PostCard';
+import PostCard from './components/PostCard';
 import axios from 'axios';
 
 const fetcher = (url: string) => axios.get(url).then(res => res.data);

@@ -1,11 +1,23 @@
 import { useState } from 'react';
 import axios from 'axios';
 
-const NewPostModal = ({ onClose, onPostCreated }: any) => {
+interface NewPostModalProps {
+  onClose: () => void;
+  onPostCreated: (post: Post) => void;
+}
+
+interface Post {
+  id: number;
+  title: string;
+  image: string;
+  excerpt: string;
+}
+
+const NewPostModal: React.FC<NewPostModalProps> = ({ onClose, onPostCreated }) => {
   const [title, setTitle] = useState('');
   const [image, setImage] = useState<File | null>(null);
 
-  const handleSubmit = async (e: any) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (!title || !image) return alert('Title and image are required');
 
